@@ -16,8 +16,8 @@ const IS_FULL_TIME = 2;
 const PART_TIME_HR = 4;
 const FULL_TIME_HR = 8;
 const WAGE_PER_HR = 20;
+const NUM_OF_WORKING_DAYS = 20;
 let empHrs = 0;
-let empCheck = Math.floor(Math.random() * 10) % 3;
 function getWorkingHrs(empCheck) {
     switch (empCheck) 
     {
@@ -29,6 +29,14 @@ function getWorkingHrs(empCheck) {
             return 0;
     }
 }
-empHrs = getWorkingHrs(empCheck)
-let empWage = empHrs * WAGE_PER_HR;
-console.log("Daily Employee wage: " + empWage);
+// UC4 - Calculate total emp wage assuming maximum 20 working days in a month
+for (let day = 1; day <= NUM_OF_WORKING_DAYS; day++) 
+{
+    let EmpCheck = Math.floor(Math.random() * 10) % 3;
+     let dailyHr = getWorkingHrs(EmpCheck);
+     empHrs += dailyHr;
+    let dailyWage = dailyHr * WAGE_PER_HR
+    console.log("Daily Employee wage of day-"+day+" : " + dailyWage);
+}
+let empWage = WAGE_PER_HR * empHrs;
+console.log("Total working hours : " + empHrs + "\nTotal monthly wage  : " + empWage);
