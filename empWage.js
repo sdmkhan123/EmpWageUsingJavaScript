@@ -16,6 +16,7 @@ const IS_FULL_TIME = 2;
 const PART_TIME_HR = 4;
 const FULL_TIME_HR = 8;
 const WAGE_PER_HR = 20;
+const MAX_WORKING_HOURS = 160;
 const NUM_OF_WORKING_DAYS = 20;
 let empHrs = 0;
 function getWorkingHrs(empCheck) {
@@ -40,3 +41,16 @@ for (let day = 1; day <= NUM_OF_WORKING_DAYS; day++)
 }
 let empWage = WAGE_PER_HR * empHrs;
 console.log("Total working hours : " + empHrs + "\nTotal monthly wage  : " + empWage);
+
+//Calculating Wages till Number of Working Days or Total Working Hours per month is Reached
+let totalEmpHours = 0;
+let totalWorkingDays = 0;
+
+while (totalEmpHours < MAX_WORKING_HOURS && totalWorkingDays < NUM_OF_WORKING_DAYS) 
+{
+    totalWorkingDays++;
+    let empCheck = Math.floor(Math.random() * 10) % 3;
+    totalEmpHours += getWorkingHrs(empCheck);
+}
+let totalEmpWage = WAGE_PER_HR * totalEmpHours;
+console.log("Total days  : " + totalWorkingDays + ", Total hours : " + totalEmpHours + ", Total wage : " + totalEmpWage);
